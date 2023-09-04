@@ -150,8 +150,8 @@ const fn = (x: number, y: string):string => x.toString() + y
 console.log(fn(12, '12'))
 
 const combine = (in1: number | string, in2: number | string):number | string => {
-    if (typeof in1 === 'number' && typeof in2 === 'number')return in1 + in2 
-    return in1.toString()+ in2.toString()    
+    if (typeof in1 === 'number' && typeof in2 === 'number')return in1 + in2
+    return in1.toString()+ in2.toString()
 }
 
 console.log(combine(1231, 1231))
@@ -167,26 +167,26 @@ type cus = {name: string, age: number}
 
 const az: cus = {name:'lawson', age: 123123}
 
-const add = (n1: number, n2:number):number  => n1 + n2 
+const add = (n1: number, n2:number):number  => n1 + n2
 
 console.log(add(1, 2))
 
 const printname = (name:string, n:number):void => {
-    if(n === 0)return 
+    if(n === 0)return
     console.log(name)
     printname(name, n -1)
 }
 printname('ozzy', 4)
 
 const printLearnlyFrom1ToN = (n: number):void => {
-    if(n === 0) return 
+    if(n === 0) return
     printLearnlyFrom1ToN(n -1)
     console.log(n)
 }
 printLearnlyFrom1ToN(10)
 
 const printLinearlyFromNTo1 = (num: number):void => {
-    if(num === 0) return 
+    if(num === 0) return
     console.log(num)
     printLinearlyFromNTo1(num -1)
 }
@@ -194,16 +194,33 @@ printLinearlyFromNTo1(10)
 
 const fact = (n:number):number => {
     if(n === 1)return 1
-    return n * fact(n-1)    
+    return n * fact(n-1)
 }
 
 console.log(fact(4))
 
 const factorial = (n: number, s: number):number => {
     if(n == 0) return s
-    return factorial(n-1, s * n)    
+    return factorial(n-1, s * n)
 }
 
 const factTailOp = (n:number):number => factorial(n, 1)
 
 console.log(factTailOp(4))
+
+const reverseList = (list:number[], i:number):void => {
+    if(i >= list.length-1-i) return
+    const temp:number = list[i]
+    list[i] = list[list.length-1-i]
+    list[list.length-1-i] = temp
+    reverseList(list, i+1)
+}
+
+const rev = (l:number[]) => reverseList(l, 0)
+
+let arr:number[] = [1,2,3,4,5,6,7,8]
+console.log(arr)
+
+rev(arr)
+
+console.log(arr)
