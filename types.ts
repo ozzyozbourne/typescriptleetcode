@@ -218,9 +218,21 @@ const reverseList = (list:number[], i:number):void => {
 
 const rev = (l:number[]) => reverseList(l, 0)
 
-let arr:number[] = [1,2,3,4,5,6,7,8]
+let arr:number[] = [1,2,3,4,5,6,7,8,9]
 console.log(arr)
 
 rev(arr)
 
 console.log(arr)
+
+
+const isPalindrome = (s:string, i:number):boolean => {
+    if(i == Math.floor(s.length/2)) return true
+    if(s[i] != s[s.length-1-i]) return false
+    return isPalindrome(s, i+1)    
+}
+
+console.log(isPalindrome("osaid", 0))
+console.log(isPalindrome("OohoO", 0))
+
+
