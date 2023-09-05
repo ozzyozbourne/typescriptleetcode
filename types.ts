@@ -235,4 +235,11 @@ const isPalindrome = (s:string, i:number):boolean => {
 console.log(isPalindrome("osaid", 0))
 console.log(isPalindrome("OohoO", 0))
 
+const fib = (n:number):number => {
+    if(n==1 || n==0) return n
+    return fib(n-1) + fib(n-2)    
+}
 
+console.log(fib(3))
+console.log(fib(4))
+console.log(fib(5))
