@@ -229,7 +229,7 @@ console.log(arr)
 const isPalindrome = (s:string, i:number):boolean => {
     if(i == Math.floor(s.length/2)) return true
     if(s[i] != s[s.length-1-i]) return false
-    return isPalindrome(s, i+1)    
+    return isPalindrome(s, i+1)
 }
 
 console.log(isPalindrome("osaid", 0))
@@ -237,9 +237,27 @@ console.log(isPalindrome("OohoO", 0))
 
 const fib = (n:number):number => {
     if(n==1 || n==0) return n
-    return fib(n-1) + fib(n-2)    
+    return fib(n-1) + fib(n-2)
 }
 
 console.log(fib(3))
 console.log(fib(4))
 console.log(fib(5))
+
+function isSubsequenceOld(s: string, t: string): boolean {
+    let [l, r] = [0, 0]
+    while(l < s.length && r < t.length) {
+        if(s[l] == t[r]) l++
+        r++
+    }
+    return l == s.length
+};
+
+const isSubsequence = (s:string, t:string):boolean => {
+  let [l, r] = [0, 0]
+  while(l < s.length && r < t.length) {
+    if(s[l] == t[r]) l++
+    r++
+  }
+  return l == s.length
+}
