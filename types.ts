@@ -261,3 +261,26 @@ const isSubsequence = (s:string, t:string):boolean => {
   }
   return l == s.length
 }
+
+const threeSum = (nums:number[]):number[][] => {
+    if(nums.length < 3) return [[]]
+    nums.sort((a, b)=>a-b)
+    const set = new Set<string>()
+    const result: number[][] = []
+    for(let i = 0; i < nums.length; i++) {
+        let [j, k] = [i+1, nums.length-1]
+        while(j<k){
+            const sum = nums[i] + nums[j] + nums[k]
+            if (sum == 0) {
+                set.add([nums[i], nums[j], nums[j]].toString())
+                j++
+                while (nums[j] == nums[j-1] && j <k)j++    
+            }else {
+                if (sum < 0)j++
+                else k--
+            }
+        }
+    }
+    set.forEach(str => result.push(str.split(',').map(Number)))
+    return result
+}
