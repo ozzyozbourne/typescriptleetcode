@@ -291,7 +291,7 @@ const threeSumOptimal = (nums:number[]):number[][]  => {
     const res:number[][] = []
     for(let i = 0; i < nums.length-2; i++){
         if(i > 0 && nums[i] == nums[i-1]) continue
-        let [j, k] = [i+1, nums.length]
+        let [j, k] = [i+1, nums.length-1]
         while(j < k){
             const sum = nums[i] + nums[j] + nums[k]
             if(sum == 0){
