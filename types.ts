@@ -284,3 +284,24 @@ const threeSum = (nums:number[]):number[][] => {
     set.forEach(str => result.push(str.split(',').map(Number)))
     return result
 }
+
+
+const threeSumOptimal = (nums:number[]):number[][]  => {
+ nums.sort((a, b) => a-b)
+    const res:number[][] = []
+    for(let i = 0; i < nums.length-2; i++){
+        if(i > 0 && nums[i] == nums[i-1]) continue
+        let [j, k] = [i+1, nums.length]
+        while(j < k){
+            const sum = nums[i] + nums[j] + nums[k]
+            if(sum == 0){
+                res.push([nums[i], nums[j], nums[k]])
+                j++
+                while(nums[j] == nums[j-1] && j < k)j++;
+            }
+            else if (sum < 0)j++
+            else k--
+        }
+    }
+    return res
+}
