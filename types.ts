@@ -305,3 +305,15 @@ const threeSumOptimal = (nums:number[]):number[][]  => {
     }
     return res
 }
+
+function twoSum(nums: number[], target: number): number[] {
+    const map = new Map<number, number>();
+    const res:number[] = []
+    for(const[index, value] of nums.entries())
+        if(map.get(target-value) == undefined)map.set(value, index);
+        else {
+            res.push(index, map.get(target-value))
+            break
+        }
+    return res
+};
