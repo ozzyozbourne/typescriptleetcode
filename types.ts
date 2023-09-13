@@ -312,8 +312,24 @@ function twoSum(nums: number[], target: number): number[] {
     for(const[index, value] of nums.entries())
         if(map.get(target-value) == undefined)map.set(value, index);
         else {
-            res.push(index, map.get(target-value))
+            const result = map.get(target-value)
+            if(result !== undefined)res.push(index, result)
             break
         }
     return res
+};
+
+function twoSumTwo(nums: number[], target: number): number[] {
+    let [left, right]:[number, number] = [0, nums.length-1]
+    while (left < right){
+        const sum = nums[left] + nums[right]
+        if(sum < target) left+=1;
+        else if (sum > target)right-=1;
+        else {
+            left+=1
+            right+=1
+            break;
+        }
+    }
+    return [left, right]
 };
