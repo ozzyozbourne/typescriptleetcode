@@ -333,3 +333,31 @@ function twoSumTwo(nums: number[], target: number): number[] {
     }
     return [left, right]
 };
+
+const fourSum = (nums:number[], target:number):number[][] => {
+    let [res,  quad]:[number[][], number[]] = [[[]], []]
+    const kSum = (k:number, start:number, target:number):void => {
+       if(k>2){
+        for(let i = start; i < nums.length-k+1; i++){
+            if (i > 0 && nums[i] === nums[i-1])continue
+            quad.push(nums[i])
+            kSum(k-1, start+1, target - nums[i])
+            quad.pop
+        }
+       }else{
+        let [left, right] = [start, nums.length]
+        while (left < right) {
+            const sum = nums[left] + nums[right]
+            if(sum < target) left+=1
+            else if (sum > target)right -=1
+            else{
+                res.push(quad.concat([nums[left], nums[right]]))
+                left+=1
+                while (nums[left] === nums[left -1] && left < right)left+=1
+            }     
+        }
+       }
+    }
+    kSum(4, 0, target)
+    return res    
+}
